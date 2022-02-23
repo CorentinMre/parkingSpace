@@ -94,18 +94,18 @@ class Parking:
         table.add_column("Total spots", style="green", no_wrap=True)
         table.add_column("Frees spots", style="green", no_wrap=True)
 
-        allTheParkingsInTheCity = self.findPark()
+        allCityCarParks = self.findPark()
         
-        for i in allTheParkingsInTheCity:
+        for i in allCityCarParks:
 
             table.add_row(i, \
-                allTheParkingsInTheCity[i]["title"], \
-                allTheParkingsInTheCity[i]["city"], \
-                allTheParkingsInTheCity[i]["street"], \
-                str(allTheParkingsInTheCity[i]["lat"]), \
-                str(allTheParkingsInTheCity[i]["lng"]), \
-                str(allTheParkingsInTheCity[i]["totalSpots"]), \
-                str(allTheParkingsInTheCity[i]["freesSpots"]))
+                allCityCarParks[i]["title"], \
+                allCityCarParks[i]["city"], \
+                allCityCarParks[i]["street"], \
+                str(allCityCarParks[i]["lat"]), \
+                str(allCityCarParks[i]["lng"]), \
+                str(allCityCarParks[i]["totalSpots"]), \
+                str(allCityCarParks[i]["freesSpots"]))
 
 
         console = Console()
