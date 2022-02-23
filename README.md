@@ -9,8 +9,6 @@
 ## Requirements
 
 - Install requirements (`pip install -r requirements.txt`)
-<br/>
-<br/>
 
 ## Usage
 
