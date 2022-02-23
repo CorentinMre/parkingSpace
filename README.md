@@ -1,5 +1,5 @@
 <p align="center"><a href="https://darkreader.org" target="_blank" rel="noreferrer noopener"><img width="250" alt="Dark Reader's mascot" src="img/icon.png"></a></p>
-<p align="center">Parking Spaces is used to see the parking spaces near you. (<strong>only</strong> underground car parks and <strong>only</strong> in France)</p>
+<p align="center"><strong>Parking Spaces</strong> is used to see the parking spaces near you. (<strong>only</strong> underground car parks and <strong>only</strong> in France)</p>
 <br/>
 
 
