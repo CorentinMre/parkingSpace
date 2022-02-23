@@ -21,18 +21,18 @@ carPark = parkingSpace.Parking("caen")
 
 if carPark.tryConn:
 
-    allTheParkingsInTheCity = carPark.findPark(ifNoParkingSpace = False) 
+    allCityCarParks = carPark.findPark(ifNoParkingSpace = False) 
     
-    for i in allTheParkingsInTheCity:
+    for i in allCityCarParks:
         print(f"""
               name: {i}
-              title: {allTheParkingsInTheCity[i]["title"]}
-              city: {allTheParkingsInTheCity[i]["city"]}
-              street: {allTheParkingsInTheCity[i]["street"]}
-              latitude: {allTheParkingsInTheCity[i]["lat"]}
-              longitude: {allTheParkingsInTheCity[i]["lng"]}
-              total spots: {allTheParkingsInTheCity[i]["totalSpots"]}
-              frees spots: {allTheParkingsInTheCity[i]["freesSpots"]}
+              title: {allCityCarParks[i]["title"]}
+              city: {allCityCarParks[i]["city"]}
+              street: {allCityCarParks[i]["street"]}
+              latitude: {allCityCarParks[i]["lat"]}
+              longitude: {allCityCarParks[i]["lng"]}
+              total spots: {allCityCarParks[i]["totalSpots"]}
+              frees spots: {allCityCarParks[i]["freesSpots"]}
               -----------------------------\n\n""")
 
 else:
