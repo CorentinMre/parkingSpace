@@ -112,4 +112,3 @@ class Parking:
 
         self.console.print(table, justify="center")
         return ""
-
