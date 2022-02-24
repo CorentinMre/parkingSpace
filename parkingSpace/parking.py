@@ -33,10 +33,11 @@ class Parking:
         self.response = self.session.get(self.parkindigoUrl)
         self.soup = BeautifulSoup(self.response.text, 'html.parser')
         self.tryConn = self.response.url != "https://fr.parkindigo.com/erreur/indisponibilite"
+        self.console = Console()
         
 
 
-    def findPark(self, ifNoParkingSpace:bool = False):
+    def findPark(self, ifNoParkingSpace:bool = False, seeWorking:bool = False):
         
         """
         Get informations about a car park.
@@ -53,8 +54,8 @@ class Parking:
         result = self.soup.find_all("li",{"class":"list__result__item"})
         dico = {}
         null = None
-        for i in range(len(result)):
         
+        for i in range(len(result)):
             dico[result[i].text.strip('\n')] = {"park-code":result[i]['data-park-code'],
                                                 "title":result[i]['data-title'],
                                                 "city":result[i]['data-city'],
@@ -62,19 +63,20 @@ class Parking:
                                                 "lat":result[i]['data-lat'],
                                                 "lng":result[i]['data-lng'],
                                                 "totalSpots": result[i]['data-total-slots']}
-        console = Console()
-        with console.status("[bold green]Working...") as status:
+        if seeWorking == True:
+            with self.console.status("[bold green]Working...") as status:
+                for i in dico:
+                    freeSpots = eval(self.session.get(self.placesUrl+dico[i]["park-code"]).text)["free_spots"]
+                    dico[i]["freesSpots"] = freeSpots if freeSpots != None or ifNoParkingSpace == False else "No parking space counter in this car park."
+                    
+                    self.console.print(f"{list(dico).index(i)+1}/{len(dico)} | {i}")
+        else:
             for i in dico:
                 freeSpots = eval(self.session.get(self.placesUrl+dico[i]["park-code"]).text)["free_spots"]
                 dico[i]["freesSpots"] = freeSpots if freeSpots != None or ifNoParkingSpace == False else "No parking space counter in this car park."
-                
 
-                console.print(f"{list(dico).index(i)+1}/{len(dico)} | {i}")
-                
-            
-        if dico == {}:
-            print("Unfortunately, there is no Indigo parking in this area. Please search again.")
-            exit()
+        assert dico != {}, "Unfortunately, there is no Indigo parking in this area. Please search again."
+
         return dico
     
     
@@ -94,7 +96,7 @@ class Parking:
         table.add_column("Total spots", style="green", no_wrap=True)
         table.add_column("Frees spots", style="green", no_wrap=True)
 
-        allCityCarParks = self.findPark()
+        allCityCarParks = self.findPark(seeWorking=True)
         
         for i in allCityCarParks:
 
@@ -108,11 +110,6 @@ class Parking:
                 str(allCityCarParks[i]["freesSpots"]))
 
 
-        console = Console()
-        console.print(table, justify="center")
+        self.console.print(table, justify="center")
         return ""
-
-            
-
-
 

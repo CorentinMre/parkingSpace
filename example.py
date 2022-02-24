@@ -4,7 +4,7 @@ carPark = parkingSpace.Parking("caen")
 
 if carPark.tryConn:
 
-    allCityCarParks = carPark.findPark(ifNoParkingSpace = False) # 'ifNoParkingSpace': It's  if no parking space counter in this car park {'place':None}
+    allCityCarParks = carPark.findPark(ifNoParkingSpace = False, seeWorking = True) # 'ifNoParkingSpace': It's  if no parking space counter in this car park {'place':None}
     
     for i in allCityCarParks:
         print(f"""
@@ -17,11 +17,6 @@ if carPark.tryConn:
               total spots: {allCityCarParks[i]["totalSpots"]}
               frees spots: {allCityCarParks[i]["freesSpots"]}
               -----------------------------\n\n""")
-    
-    ################################################
-    #OR
-    ################################################
-    print(carPark)
 
 else:
     print("City Error")
