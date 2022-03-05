@@ -1,4 +1,4 @@
-<p align="center"><a href="https://darkreader.org" target="_blank" rel="noreferrer noopener"><img width="250" alt="Dark Reader's mascot" src="img/icon.png"></a></p>
+<p align="center"><img width="250" alt="Parking Space" src="img/icon.png"></p>
 <p align="center"><strong>Parking Space</strong> is used to see the parking spaces near you. (<strong>only</strong> underground car parks and <strong>only</strong> in France)</p>
 <br/>
 
