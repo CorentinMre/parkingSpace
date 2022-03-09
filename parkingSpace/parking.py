@@ -66,13 +66,15 @@ class Parking:
         if seeWorking == True:
             with self.console.status("[bold green]Working...") as status:
                 for i in dico:
-                    freeSpots = eval(self.session.get(self.placesUrl+dico[i]["park-code"]).text)["free_spots"]
+                    try: freeSpots = eval(self.session.get(self.placesUrl+dico[i]["park-code"]).text)["free_spots"]
+                    except: freeSpots = None
                     dico[i]["freesSpots"] = freeSpots if freeSpots != None or ifNoParkingSpace == False else "No parking space counter in this car park."
                     
                     self.console.print(f"{list(dico).index(i)+1}/{len(dico)} | {i}")
         else:
             for i in dico:
-                freeSpots = eval(self.session.get(self.placesUrl+dico[i]["park-code"]).text)["free_spots"]
+                try: freeSpots = eval(self.session.get(self.placesUrl+dico[i]["park-code"]).text)["free_spots"]
+                except: freeSpots = None
                 dico[i]["freesSpots"] = freeSpots if freeSpots != None or ifNoParkingSpace == False else "No parking space counter in this car park."
 
         assert dico != {}, "Unfortunately, there is no Indigo parking in this area. Please search again."
